@@ -123,7 +123,6 @@ public class MovieController extends HttpServlet {
         String my_db_pwd = "csye6220";
 
         if (action.equalsIgnoreCase("view")) {
-
             try {
                 // Load the JDBC Driver
                 Class.forName("com.mysql.cj.jdbc.Driver");
@@ -133,6 +132,8 @@ public class MovieController extends HttpServlet {
 
                 // Create the statement
                 Statement statement = conn.createStatement();
+
+                // 
                 String sql = "SELECT * FROM movies";
                 ResultSet resultSet = statement.executeQuery(sql);
 
@@ -150,9 +151,9 @@ public class MovieController extends HttpServlet {
 
                     movieList.add(movieObj);
                 }
-                
+
                 request.setAttribute("movieList", movieList);
-                
+
             } catch (Exception ex) {
                 // handle any errors
             }
@@ -160,12 +161,29 @@ public class MovieController extends HttpServlet {
             RequestDispatcher rd = request.getRequestDispatcher("/view-all-movies.jsp");
             rd.forward(request, response);
 
-        } else if (action.equalsIgnoreCase("register")) {
-            //get the selected courses
+        } else if (action.equalsIgnoreCase("add")) {
+            //get the movie details 
 
-            //add the course a list, and then store it in the session
-            //if arraylist hast not been created, create it
-            RequestDispatcher rd = request.getRequestDispatcher("/registration-confirm.jsp");
+            try {
+                // Load the JDBC Driver
+                Class.forName("com.mysql.cj.jdbc.Driver");
+
+                // Establish the connection
+                conn = DriverManager.getConnection("jdbc:mysql://localhost/movies_db", my_db_user, my_db_pwd);
+
+                // Create the statement
+                Statement statement = conn.createStatement();
+
+                String valueString = "(" + request.getParameter("movieID") + ", '" + request.getParameter("title") + "', '" + request.getParameter("maleLead") + "', '" + request.getParameter("femaleLead") + "', " + request.getParameter("releaseYear") + ", '" + request.getParameter("genre") + "')";
+
+                String sql = "INSERT INTO movies VALUES " + valueString;
+                statement.executeUpdate(sql);
+                
+            } catch (Exception ex) {
+                // handle any errors
+            }
+
+            RequestDispatcher rd = request.getRequestDispatcher("/add-movie-confirmation.jsp");
             rd.forward(request, response);
         } else if (action.equalsIgnoreCase("viewmycourses")) {
             RequestDispatcher rd = request.getRequestDispatcher("/view-registration.jsp");

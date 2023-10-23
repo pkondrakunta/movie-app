@@ -9,7 +9,7 @@
 <html>
     <head>
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-        <title>JSP Page</title>
+        <title>MovieApp</title>
     </head>
     <body>
         <h1>Search Courses Offered in Spring 2024</h1>
