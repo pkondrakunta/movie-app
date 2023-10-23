@@ -1,11 +1,19 @@
 ## Setting up the MySQL Server
 
 1. Downloaded MySQL 8.1 Configurator and used the default settings to start the server
-2. Connected the server on MySQL Workbench
+![MySQL Server Configuration](https://github.com/pkondrakunta/movie-app/tree/master/readme-assets/mysql_server_config.png)\
+
+2. Connected the server on MySQL Workbench\
+![Connect to your server - Authentication](https://github.com/pkondrakunta/movie-app/tree/master/readme-assets/server-connect-auth.png)\
+![Connect to your DB](https://github.com/pkondrakunta/movie-app/tree/master/readme-assets/server-connect1.png)\
+![Connect to your DB](https://github.com/pkondrakunta/movie-app/tree/master/readme-assets/server-connect2.png)
 
 > To check if your MySQL server is running, you can type "Services" on Start and review the list of services running on your Windows PC.
 
-## Connecting to the MySQL Server and retrieving data
+You can run a query or view your DB, tables in SQL Workbench.\
+![Run a query](https://github.com/pkondrakunta/movie-app/tree/master/readme-assets/run-query.png)
+
+## Connecting to the MySQL Server and retrieving data in your Java Project
 Add the dependency to your project:
 
 ```xml
