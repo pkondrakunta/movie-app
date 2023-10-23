@@ -34,8 +34,7 @@ String my_db_user = "csye_user";
 String my_db_pwd = "csye6220";
 
 try {
-    conn = DriverManager.getConnection("jdbc:mysql://localhost/"+ my_db +"?"
-            + "user=" + my_db_user + "&password=" + my_db_pwd + "");
+    conn = DriverManager.getConnection("jdbc:mysql://localhost/movies_db", my_db_user, my_db_pwd);
 
 } catch (SQLException ex) {
     // handle any errors
@@ -43,16 +42,41 @@ try {
 ```
 ### 3. Create a statement
 
+```java
+Statement statement = conn.createStatement();
+```
 
+### 4. Using the statement and retrieving the ResultSet
+```java
+String sql = "SELECT * FROM movies";
+ResultSet resultSet = statement.executeQuery(sql);
 
-### 4. Using the ResultSet
+// Loop through the ResultSet
+List<Movie> movieList = new ArrayList<Movie>();
 
+while (resultSet.next()) {
+    // Create your loop
 
+    // Movie movieObj = new Movie();
+
+    // movieObj.setMovieID(resultSet.getInt("MovieID"));
+    // movieObj.setTitle(resultSet.getString("Title"));
+    // movieObj.setMaleLead(resultSet.getString("MaleLead"));
+    // movieObj.setFemaleLead(resultSet.getString("FemaleLead"));
+    // movieObj.setReleaseYear(resultSet.getInt("ReleaseYear"));
+    // movieObj.setGenre(resultSet.getString("Genre"));
+
+    // movieList.add(movieObj);
+}
+```
+
+> You can pass the List<Object> to your JSP using scopes. 
 
 Refer to official [MySQL Docs](https://dev.mysql.com/doc/connector-j/8.1/en/connector-j-usagenotes-connect-drivermanager.html)
 
+[//]: # (Some info about connecting to SQL servers using JDBC)
 
-### Notes about connecting to the DB
+## Notes about connecting to the DB
 
 The most important members of the java.sql package are as follows:
 - `DriverManager` class\

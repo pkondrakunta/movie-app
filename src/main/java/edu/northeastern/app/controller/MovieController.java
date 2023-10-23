@@ -116,13 +116,6 @@ public class MovieController extends HttpServlet {
             throws ServletException, IOException {
         String action = request.getParameter("action");
 
-        // Connecting to MySQL Server - START
-        // Load the JDBC Driver, DriverManager 
-//        try {
-//            Class.forName("com.mysql.cj.jdbc.Driver");
-//        } catch (ClassNotFoundException ex) {
-//            Logger.getLogger(MovieController.class.getName()).log(Level.SEVERE, null, ex);
-//        }
         // Connection Initialisation 
         Connection conn = null;
 
@@ -132,11 +125,13 @@ public class MovieController extends HttpServlet {
         if (action.equalsIgnoreCase("view")) {
 
             try {
-
+                // Load the JDBC Driver
                 Class.forName("com.mysql.cj.jdbc.Driver");
 
+                // Establish the connection
                 conn = DriverManager.getConnection("jdbc:mysql://localhost/movies_db", my_db_user, my_db_pwd);
 
+                // Create the statement
                 Statement statement = conn.createStatement();
                 String sql = "SELECT * FROM movies";
                 ResultSet resultSet = statement.executeQuery(sql);
