@@ -4,7 +4,7 @@
  */
 package edu.northeastern.app.controller;
 
-import edu.northeastern.pojo.Movie;
+import edu.northeastern.app.model.Movie;
 import jakarta.servlet.RequestDispatcher;
 import jakarta.servlet.ServletContext;
 import java.io.IOException;
