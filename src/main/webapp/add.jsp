@@ -20,6 +20,8 @@
         
         <div class="container">
             <h2>Add a movie</h2><br/>
+            
+            
             <form method='post' action='movie.htm?action=add'>
                 <div class="form-group">
                     <label for="movieID">Please enter Movie ID: </label>
